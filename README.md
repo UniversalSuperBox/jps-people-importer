@@ -4,6 +4,8 @@ This script creates users in a JAMF Pro Server instance from an LDAP query.
 
 This is a workaround for an issue where the JPS immediately unmanages devices signed into by users who do not exist in its user database.
 
+The script creates users with their username set to their LDAP `sAMAccountName`, email set to the `mail` attribute, and the name '`sn`, `givenName`'.
+
 The script prints status information and errors to stderr and the usernames it imports, one per line, to stdout.
 
 ## Prerequisites
