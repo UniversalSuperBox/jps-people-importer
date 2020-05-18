@@ -1,0 +1,20 @@
+from os import environ
+
+# This configuration is documented in README.md
+
+LDAP_FILTER = environ["LDAP_FILTER"]
+
+LDAP_SEARCH_DN_LIST = [
+    environ["LDAP_SEARCH_DN"]
+]
+
+LDAP_BIND_URI = environ["LDAP_BIND_URI"]
+LDAP_INSECURE = environ.get("LDAP_INSECURE", False)
+
+LDAP_BIND_USERNAME = environ["LDAP_BIND_USERNAME"]
+LDAP_BIND_PASSWORD = environ["LDAP_BIND_PASSWORD"]
+
+JAMF_URL = environ["JAMF_URL"]
+
+JAMF_USERNAME = environ["JAMF_USERNAME"]
+JAMF_PASSWORD = environ["JAMF_PASSWORD"]
