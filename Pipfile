@@ -9,6 +9,3 @@ pylint = "*"
 [packages]
 python-ldap = "*"
 requests = "*"
-
-[requires]
-python_version = "3.8"
