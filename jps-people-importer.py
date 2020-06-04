@@ -195,6 +195,7 @@ def main():
     except JSONDecodeError:
         eprint(jamf_user_request.text)
         eprint("Failed to decode /JSSResource/users response as JSON.")
+        sys.exit(1)
 
     jamf_usernames = frozenset([user["name"] for user in jamf_user_json["users"]])
 
