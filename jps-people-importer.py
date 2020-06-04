@@ -27,6 +27,8 @@ from collections import namedtuple
 from multiprocessing.pool import ThreadPool
 from typing import List
 
+from json.decoder import JSONDecodeError
+
 import ldap
 import requests
 from ldap.controls import SimplePagedResultsControl
@@ -188,7 +190,11 @@ def main():
         auth=JAMF_AUTH,
         headers={"Accept": "application/json"},
     )
-    jamf_user_json = jamf_user_request.json()
+    try:
+        jamf_user_json = jamf_user_request.json()
+    except JSONDecodeError:
+        eprint(jamf_user_request.text)
+        eprint("Failed to decode /JSSResource/users response as JSON.")
 
     jamf_usernames = frozenset([user["name"] for user in jamf_user_json["users"]])
 
