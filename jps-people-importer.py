@@ -130,6 +130,7 @@ def create_user_in_jamf(user: User):
     * JAMF_AUTH must be a requests.auth interface instance
     * JAMF_URL must be the full base URL of a JAMF instance.
     """
+    eprint("Attempting to create", user.sAMAccountName)
 
     xml = """
         <user>
@@ -173,6 +174,7 @@ def main():
     eprint("Searching directory for users...")
     ldap_users = []
     for base_dn in LDAP_SEARCH_DN_LIST:
+        eprint("Searching DN", base_dn, "with filter", LDAP_FILTER)
         ldap_users.extend(results_for_dn(directory, base_dn, LDAP_FILTER))
 
     directory.unbind_s()
